@@ -44,6 +44,7 @@ public class BoardView extends View {
     private List<Pos> lastMovePath = Collections.emptyList();
 
     private boolean firstRender = true;
+    private boolean flipped;
     private ValueAnimator animator;
     private float animProgress = 1f;
     private List<Pos> animPath = Collections.emptyList();
@@ -87,6 +88,10 @@ public class BoardView extends View {
         this.listener = listener;
     }
 
+    private int screen(int index) {
+        return flipped ? Board.SIZE - 1 - index : index;
+    }
+
     private float dp(float value) {
         return value * getResources().getDisplayMetrics().density;
     }
@@ -96,7 +101,8 @@ public class BoardView extends View {
     }
 
     public void render(Board board, List<Pos> selectedPath, Set<Pos> targets,
-                       Set<Pos> hintPieces, List<Pos> lastMovePath) {
+                       Set<Pos> hintPieces, List<Pos> lastMovePath, boolean flipped) {
+        this.flipped = flipped;
         boolean moveChanged = !firstRender && lastMovePath.size() >= 2 && !lastMovePath.equals(this.lastMovePath);
         firstRender = false;
 
@@ -168,8 +174,10 @@ public class BoardView extends View {
         for (int row = 0; row < Board.SIZE; row++) {
             for (int col = 0; col < Board.SIZE; col++) {
                 Pos pos = new Pos(row, col);
-                float left = col * cell;
-                float top = row * cell;
+                int sr = screen(row);
+                int sc = screen(col);
+                float left = sc * cell;
+                float top = sr * cell;
 
                 fill.setColor(color(pos.isDark() ? R.color.board_dark : R.color.board_light));
                 canvas.drawRect(left, top, left + cell, top + cell, fill);
@@ -178,11 +186,11 @@ public class BoardView extends View {
                 if (selectedPath.contains(pos)) drawOverlay(canvas, left, top, cell, R.color.highlight_selected);
 
                 labels.setColor(color(pos.isDark() ? R.color.board_light : R.color.board_dark));
-                if (row == Board.SIZE - 1) {
+                if (sr == Board.SIZE - 1) {
                     labels.setTextAlign(Paint.Align.RIGHT);
                     canvas.drawText(String.valueOf((char) ('a' + col)), left + cell - pad, top + cell - pad, labels);
                 }
-                if (col == 0) {
+                if (sc == 0) {
                     labels.setTextAlign(Paint.Align.LEFT);
                     canvas.drawText(String.valueOf(Board.SIZE - row), left + pad, top + labels.getTextSize() + pad, labels);
                 }
@@ -211,8 +219,8 @@ public class BoardView extends View {
             float f = t - i;
             Pos from = animPath.get(i);
             Pos to = animPath.get(i + 1);
-            float cx = (from.col + (to.col - from.col) * f + 0.5f) * cell;
-            float cy = (from.row + (to.row - from.row) * f + 0.5f) * cell;
+            float cx = (screen(from.col) + (screen(to.col) - screen(from.col)) * f + 0.5f) * cell;
+            float cy = (screen(from.row) + (screen(to.row) - screen(from.row)) * f + 0.5f) * cell;
             drawPiece(canvas, cx, cy, cell, animPiece);
         }
     }
@@ -269,7 +277,7 @@ public class BoardView extends View {
         if (event.getAction() == MotionEvent.ACTION_DOWN) return true;
         if (event.getAction() == MotionEvent.ACTION_UP) {
             float cell = (float) getWidth() / Board.SIZE;
-            Pos pos = new Pos((int) (event.getY() / cell), (int) (event.getX() / cell));
+            Pos pos = new Pos(screen((int) (event.getY() / cell)), screen((int) (event.getX() / cell)));
             if (pos.inBounds() && listener != null) listener.onSquareTapped(pos);
             performClick();
             return true;

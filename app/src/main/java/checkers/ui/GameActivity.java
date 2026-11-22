@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 import checkers.R;
+import checkers.game.Side;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
 import timber.log.Timber;
@@ -22,6 +23,8 @@ public class GameActivity extends AppCompatActivity {
     private LinearProgressIndicator thinkingIndicator;
     private TextView computerScoreText;
     private TextView playerScoreText;
+    private View computerDot;
+    private View playerDot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,7 @@ public class GameActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(GameViewModel.class);
         viewModel.setDifficulty(Settings.getDifficulty(this));
+        viewModel.setHumanSide(Settings.getHumanSide(this));
 
         boardView = findViewById(R.id.boardView);
         statusCard = findViewById(R.id.statusCard);
@@ -38,6 +42,8 @@ public class GameActivity extends AppCompatActivity {
         thinkingIndicator = findViewById(R.id.thinkingIndicator);
         computerScoreText = findViewById(R.id.computerScoreText);
         playerScoreText = findViewById(R.id.playerScoreText);
+        computerDot = findViewById(R.id.computerDot);
+        playerDot = findViewById(R.id.playerDot);
 
         boardView.setOnSquareTapListener(viewModel::onSquareTapped);
         findViewById(R.id.newGameButton).setOnClickListener(v -> viewModel.newGame());
@@ -47,7 +53,10 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void render(GameUiState ui) {
-        boardView.render(ui.board, ui.selectedPath, ui.targets, ui.hintPieces, ui.lastMovePath);
+        boolean playingBlack = ui.humanSide == Side.BLACK;
+        boardView.render(ui.board, ui.selectedPath, ui.targets, ui.hintPieces, ui.lastMovePath, playingBlack);
+        playerDot.setBackgroundResource(playingBlack ? R.drawable.dot_black : R.drawable.dot_white);
+        computerDot.setBackgroundResource(playingBlack ? R.drawable.dot_white : R.drawable.dot_black);
 
         statusText.setText(statusText(ui.status));
         statusCard.setCardBackgroundColor(ContextCompat.getColor(this, statusColor(ui.status)));

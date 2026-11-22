@@ -11,8 +11,15 @@
     <string name="menu_exit">Exit</string>
     <string name="button_menu">Menu</string>
 
+    <string name="button_side">Playing as: %1$s</string>
+    <string name="side_white">White</string>
+    <string name="side_black">Black</string>
+    <string name="side_title">Choose your colour</string>
+    <string name="side_white_option">White — you move first</string>
+    <string name="side_black_option">Black — the computer moves first</string>
+
     <string name="rules_title">Rules</string>
-    <string name="rules_text">• You play white and move first.\n• A man moves one square diagonally forward.\n• Capturing is mandatory, and men may capture backwards too.\n• A multiple capture must be completed.\n• A man that reaches the far edge becomes a king and moves any distance along a diagonal.\n• 15 moves by kings without a capture is a draw.\n• You lose when you have no pieces or no legal moves.</string>
+    <string name="rules_text">• White always moves first. Choose your colour in the menu.\n• A man moves one square diagonally forward.\n• Capturing is mandatory, and men may capture backwards too.\n• A multiple capture must be completed.\n• A man that reaches the far edge becomes a king and moves any distance along a diagonal.\n• 15 moves by kings without a capture is a draw.\n• You lose when you have no pieces or no legal moves.</string>
 
     <string name="status_your_turn">Your move</string>
     <string name="status_must_capture">Your move — you must capture!</string>

@@ -39,6 +39,7 @@
                 android:padding="12dp">
 
                 <View
+                    android:id="@+id/computerDot"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:background="@drawable/dot_black" />
@@ -72,6 +73,7 @@
                 android:padding="12dp">
 
                 <View
+                    android:id="@+id/playerDot"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:background="@drawable/dot_white" />

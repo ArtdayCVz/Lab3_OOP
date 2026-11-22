@@ -16,6 +16,13 @@ public class ComputerPlayerTest {
     }
 
     @Test
+    public void choosesALegalMoveForWhite() {
+        GameState state = GameState.initial();
+        Move move = new ComputerPlayer(Difficulty.MEDIUM).chooseMove(state);
+        assertTrue(state.getLegalMoves().contains(move));
+    }
+
+    @Test
     public void returnsNullWhenThereAreNoMoves() {
         Board board = Board.empty().with(Pos.fromNotation("d4"), Piece.man(Side.WHITE));
         GameState state = new GameState(board, Side.BLACK);

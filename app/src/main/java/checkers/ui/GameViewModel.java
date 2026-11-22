@@ -24,8 +24,8 @@ import timber.log.Timber;
 public class GameViewModel extends ViewModel {
     private static final long MIN_THINK_MS = 400L;
 
-    private final Side human = Side.WHITE;
-    private final Side computer = Side.BLACK;
+    private Side human = Side.WHITE;
+    private Side computer = Side.BLACK;
 
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
@@ -52,13 +52,26 @@ public class GameViewModel extends ViewModel {
     }
 
     public void newGame() {
+        restart();
+    }
+
+    public void setHumanSide(Side side) {
+        if (side == human) return;
+        Timber.i("Player side changed: %s -> %s", human, side);
+        human = side;
+        computer = side.opponent();
+        restart();
+    }
+
+    private void restart() {
         generation++;
         computerThinking = false;
         state = GameState.initial();
         path = Collections.emptyList();
         lastMove = null;
-        Timber.i("New game started (difficulty=%s)", difficulty);
+        Timber.i("New game started (player=%s, difficulty=%s)", human, difficulty);
         publish();
+        if (state.getTurn() == computer) startComputerTurn();
     }
 
     public void setDifficulty(Difficulty value) {
@@ -198,7 +211,8 @@ public class GameViewModel extends ViewModel {
                 hints,
                 lastMove != null ? lastMove.getPath() : Collections.<Pos>emptyList(),
                 state.getBoard().count(human),
-                state.getBoard().count(computer));
+                state.getBoard().count(computer),
+                human);
     }
 
     private Status statusOf(boolean mustCapture) {
