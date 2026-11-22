@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Checkers</string>
+
+    <string name="button_new_game">New game</string>
+    <string name="button_difficulty">Difficulty: %1$s</string>
+    <string name="button_language">Language</string>
+
+    <string name="status_your_turn">Your move</string>
+    <string name="status_must_capture">Your move — you must capture!</string>
+    <string name="status_thinking">Computer is thinking…</string>
+    <string name="status_you_won">You won!</string>
+    <string name="status_computer_won">The computer won</string>
+    <string name="status_draw">Draw</string>
+
+    <plurals name="pieces_you">
+        <item quantity="one">You: %d piece</item>
+        <item quantity="other">You: %d pieces</item>
+    </plurals>
+    <plurals name="pieces_computer">
+        <item quantity="one">Computer: %d piece</item>
+        <item quantity="other">Computer: %d pieces</item>
+    </plurals>
+
+    <string name="difficulty_title">Computer difficulty</string>
+    <string name="difficulty_easy">Easy</string>
+    <string name="difficulty_medium">Medium</string>
+    <string name="difficulty_hard">Hard</string>
+
+    <string name="language_title">Language</string>
+    <string name="language_system">System default</string>
+    <string name="language_english" translatable="false">English</string>
+    <string name="language_ukrainian" translatable="false">Українська</string>
+
+    <string name="board_description">Checkers board. Tap a piece, then a highlighted square.</string>
+</resources>

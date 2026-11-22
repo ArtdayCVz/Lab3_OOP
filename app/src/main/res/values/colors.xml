@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="brand_primary">#7A4B21</color>
+    <color name="brand_on_primary">#FFFFFF</color>
+    <color name="brand_primary_container">#FFDCC1</color>
+    <color name="brand_on_primary_container">#2C1600</color>
+    <color name="brand_secondary_container">#F1DFD0</color>
+    <color name="brand_on_secondary_container">#2A1A0C</color>
+    <color name="app_surface">#FFF8F3</color>
+    <color name="app_on_surface">#201A16</color>
+    <color name="card_bg">#F6E9DD</color>
+
+    <color name="status_text">#1B1B1B</color>
+    <color name="status_your_turn">#D7E8D4</color>
+    <color name="status_must_capture">#FFE0B2</color>
+    <color name="status_thinking">#E3E8F0</color>
+    <color name="status_win">#A5D6A7</color>
+    <color name="status_lose">#EF9A9A</color>
+    <color name="status_draw">#E0E0E0</color>
+
+    <color name="board_frame">#5A3920</color>
+    <color name="board_light">#F2E1C0</color>
+    <color name="board_dark">#B07A4A</color>
+    <color name="piece_white_light">#FFFFFF</color>
+    <color name="piece_white_dark">#D9CDB8</color>
+    <color name="piece_white_edge">#A99B84</color>
+    <color name="piece_black_light">#5E5E5E</color>
+    <color name="piece_black_dark">#1B1B1B</color>
+    <color name="piece_black_edge">#000000</color>
+    <color name="piece_black_ring">#6E6E6E</color>
+    <color name="king_mark">#FFC107</color>
+    <color name="king_edge">#B8860B</color>
+    <color name="piece_shadow">#55000000</color>
+    <color name="highlight_selected">#99FFEB3B</color>
+    <color name="highlight_last_move">#6666BB6A</color>
+    <color name="highlight_target">#CC2E7D32</color>
+    <color name="highlight_hint">#FFE53935</color>
+</resources>

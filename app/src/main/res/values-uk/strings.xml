@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Шашки</string>
+
+    <string name="button_new_game">Нова гра</string>
+    <string name="button_difficulty">Складність: %1$s</string>
+    <string name="button_language">Мова</string>
+
+    <string name="status_your_turn">Ваш хід</string>
+    <string name="status_must_capture">Ваш хід — потрібно бити!</string>
+    <string name="status_thinking">Комп’ютер думає…</string>
+    <string name="status_you_won">Ви перемогли!</string>
+    <string name="status_computer_won">Комп’ютер переміг</string>
+    <string name="status_draw">Нічия</string>
+
+    <plurals name="pieces_you">
+        <item quantity="one">Ви: %d шашка</item>
+        <item quantity="few">Ви: %d шашки</item>
+        <item quantity="many">Ви: %d шашок</item>
+        <item quantity="other">Ви: %d шашки</item>
+    </plurals>
+    <plurals name="pieces_computer">
+        <item quantity="one">Комп’ютер: %d шашка</item>
+        <item quantity="few">Комп’ютер: %d шашки</item>
+        <item quantity="many">Комп’ютер: %d шашок</item>
+        <item quantity="other">Комп’ютер: %d шашки</item>
+    </plurals>
+
+    <string name="difficulty_title">Складність комп’ютера</string>
+    <string name="difficulty_easy">Легко</string>
+    <string name="difficulty_medium">Середньо</string>
+    <string name="difficulty_hard">Складно</string>
+
+    <string name="language_title">Мова</string>
+    <string name="language_system">Як у системі</string>
+
+    <string name="board_description">Дошка для шашок. Торкніться шашки, а потім підсвіченого поля.</string>
+</resources>
