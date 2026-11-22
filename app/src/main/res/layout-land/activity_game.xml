@@ -6,7 +6,7 @@
     android:orientation="horizontal"
     android:padding="16dp">
 
-    <com.example.checkers.ui.BoardView
+    <checkers.ui.BoardView
         android:id="@+id/boardView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -155,20 +155,12 @@
                 app:cornerRadius="14dp" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/difficultyButton"
+                android:id="@+id/menuButton"
                 style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:cornerRadius="14dp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/languageButton"
-                style="@style/Widget.Material3.Button.TonalButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/button_language"
+                android:text="@string/button_menu"
                 app:cornerRadius="14dp" />
         </LinearLayout>
     </ScrollView>

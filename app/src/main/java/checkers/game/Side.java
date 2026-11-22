@@ -1,4 +1,4 @@
-package com.example.checkers.game;
+package checkers.game;
 
 public enum Side {
     WHITE(-1, 0),

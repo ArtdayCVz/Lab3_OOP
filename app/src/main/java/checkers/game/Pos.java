@@ -1,4 +1,4 @@
-package com.example.checkers.game;
+package checkers.game;
 
 public final class Pos {
     public final int row;

@@ -1,4 +1,4 @@
-package com.example.checkers.ui;
+package checkers.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -20,11 +20,11 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import androidx.annotation.ColorRes;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
-import com.example.checkers.R;
-import com.example.checkers.game.Board;
-import com.example.checkers.game.Piece;
-import com.example.checkers.game.Pos;
-import com.example.checkers.game.Side;
+import checkers.R;
+import checkers.game.Board;
+import checkers.game.Piece;
+import checkers.game.Pos;
+import checkers.game.Side;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;

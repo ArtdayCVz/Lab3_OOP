@@ -1,17 +1,17 @@
-package com.example.checkers.ui;
+package checkers.ui;
 
 import android.os.Handler;
 import android.os.Looper;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import com.example.checkers.game.ComputerPlayer;
-import com.example.checkers.game.Difficulty;
-import com.example.checkers.game.GameState;
-import com.example.checkers.game.Move;
-import com.example.checkers.game.Outcome;
-import com.example.checkers.game.Pos;
-import com.example.checkers.game.Side;
+import checkers.game.ComputerPlayer;
+import checkers.game.Difficulty;
+import checkers.game.GameState;
+import checkers.game.Move;
+import checkers.game.Outcome;
+import checkers.game.Pos;
+import checkers.game.Side;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -62,6 +62,7 @@ public class GameViewModel extends ViewModel {
     }
 
     public void setDifficulty(Difficulty value) {
+        if (value == difficulty) return;
         Timber.i("Difficulty changed: %s -> %s", difficulty, value);
         difficulty = value;
         publish();

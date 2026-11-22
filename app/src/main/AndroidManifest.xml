@@ -12,13 +12,17 @@
         android:theme="@style/Theme.Checkers">
 
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.MenuActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.GameActivity"
+            android:exported="false" />
 
         <service
             android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"

@@ -1,4 +1,4 @@
-package com.example.checkers;
+package checkers;
 
 import android.app.Application;
 import android.util.Log;

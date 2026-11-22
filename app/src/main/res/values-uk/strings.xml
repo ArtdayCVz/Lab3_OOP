@@ -6,6 +6,14 @@
     <string name="button_difficulty">Складність: %1$s</string>
     <string name="button_language">Мова</string>
 
+    <string name="menu_play">Грати</string>
+    <string name="menu_rules">Правила</string>
+    <string name="menu_exit">Вихід</string>
+    <string name="button_menu">Меню</string>
+
+    <string name="rules_title">Правила</string>
+    <string name="rules_text">• Ви граєте білими й ходите першим.\n• Проста шашка ходить на одне поле по діагоналі вперед.\n• Бити обов’язково, причому простою шашкою можна бити й назад.\n• Серію взять потрібно завершити.\n• Шашка, що дійшла до протилежного краю, стає дамкою й ходить по діагоналі на будь-яку відстань.\n• 15 ходів дамками без взяття — нічия.\n• Програє той, у кого не лишилось шашок або ходів.</string>
+
     <string name="status_your_turn">Ваш хід</string>
     <string name="status_must_capture">Ваш хід — потрібно бити!</string>
     <string name="status_thinking">Комп’ютер думає…</string>

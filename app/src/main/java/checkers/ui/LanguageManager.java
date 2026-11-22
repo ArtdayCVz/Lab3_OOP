@@ -1,9 +1,9 @@
-package com.example.checkers.ui;
+package checkers.ui;
 
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.os.LocaleListCompat;
-import com.example.checkers.R;
+import checkers.R;
 import timber.log.Timber;
 
 public final class LanguageManager {

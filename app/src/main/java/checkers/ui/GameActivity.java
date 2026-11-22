@@ -1,4 +1,4 @@
-package com.example.checkers.ui;
+package checkers.ui;
 
 import android.os.Bundle;
 import android.view.View;
@@ -8,15 +8,12 @@ import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
-import com.example.checkers.R;
-import com.example.checkers.game.Difficulty;
+import checkers.R;
 import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
-import java.util.Arrays;
 import timber.log.Timber;
 
-public class MainActivity extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity {
 
     private GameViewModel viewModel;
     private BoardView boardView;
@@ -25,15 +22,15 @@ public class MainActivity extends AppCompatActivity {
     private LinearProgressIndicator thinkingIndicator;
     private TextView computerScoreText;
     private TextView playerScoreText;
-    private TextView difficultyButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Timber.d("MainActivity created");
+        setContentView(R.layout.activity_game);
+        Timber.d("GameActivity created");
 
         viewModel = new ViewModelProvider(this).get(GameViewModel.class);
+        viewModel.setDifficulty(Settings.getDifficulty(this));
 
         boardView = findViewById(R.id.boardView);
         statusCard = findViewById(R.id.statusCard);
@@ -41,12 +38,10 @@ public class MainActivity extends AppCompatActivity {
         thinkingIndicator = findViewById(R.id.thinkingIndicator);
         computerScoreText = findViewById(R.id.computerScoreText);
         playerScoreText = findViewById(R.id.playerScoreText);
-        difficultyButton = findViewById(R.id.difficultyButton);
 
         boardView.setOnSquareTapListener(viewModel::onSquareTapped);
         findViewById(R.id.newGameButton).setOnClickListener(v -> viewModel.newGame());
-        difficultyButton.setOnClickListener(v -> showDifficultyDialog());
-        findViewById(R.id.languageButton).setOnClickListener(v -> showLanguageDialog());
+        findViewById(R.id.menuButton).setOnClickListener(v -> finish());
 
         viewModel.getUi().observe(this, this::render);
     }
@@ -62,8 +57,6 @@ public class MainActivity extends AppCompatActivity {
                 getResources().getQuantityString(R.plurals.pieces_you, ui.humanPieces, ui.humanPieces));
         computerScoreText.setText(
                 getResources().getQuantityString(R.plurals.pieces_computer, ui.computerPieces, ui.computerPieces));
-        difficultyButton.setText(getString(R.string.button_difficulty,
-                getString(difficultyLabel(viewModel.getDifficulty()))));
     }
 
     @StringRes
@@ -100,49 +93,5 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return R.color.status_draw;
         }
-    }
-
-    @StringRes
-    private static int difficultyLabel(Difficulty difficulty) {
-        switch (difficulty) {
-            case EASY:
-                return R.string.difficulty_easy;
-            case MEDIUM:
-                return R.string.difficulty_medium;
-            default:
-                return R.string.difficulty_hard;
-        }
-    }
-
-    private void showDifficultyDialog() {
-        final Difficulty[] levels = Difficulty.values();
-        String[] labels = new String[levels.length];
-        for (int i = 0; i < levels.length; i++) labels[i] = getString(difficultyLabel(levels[i]));
-        int checked = Arrays.asList(levels).indexOf(viewModel.getDifficulty());
-
-        new MaterialAlertDialogBuilder(this)
-                .setTitle(R.string.difficulty_title)
-                .setSingleChoiceItems(labels, checked, (dialog, which) -> {
-                    viewModel.setDifficulty(levels[which]);
-                    dialog.dismiss();
-                })
-                .setNegativeButton(android.R.string.cancel, null)
-                .show();
-    }
-
-    private void showLanguageDialog() {
-        final LanguageManager.AppLanguage[] languages = LanguageManager.AppLanguage.values();
-        String[] labels = new String[languages.length];
-        for (int i = 0; i < languages.length; i++) labels[i] = getString(languages[i].label);
-        int checked = Arrays.asList(languages).indexOf(LanguageManager.current());
-
-        new MaterialAlertDialogBuilder(this)
-                .setTitle(R.string.language_title)
-                .setSingleChoiceItems(labels, checked, (dialog, which) -> {
-                    dialog.dismiss();
-                    LanguageManager.apply(languages[which]);
-                })
-                .setNegativeButton(android.R.string.cancel, null)
-                .show();
     }
 }

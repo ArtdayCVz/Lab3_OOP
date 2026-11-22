@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.checkers"
+    namespace = "checkers"
     compileSdk = 35
 
     defaultConfig {

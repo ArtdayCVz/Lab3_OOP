@@ -1,4 +1,4 @@
-package com.example.checkers.ui;
+package checkers.ui;
 
 public enum Status {
     YOUR_TURN,

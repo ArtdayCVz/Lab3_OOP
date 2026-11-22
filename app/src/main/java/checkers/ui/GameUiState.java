@@ -1,7 +1,7 @@
-package com.example.checkers.ui;
+package checkers.ui;
 
-import com.example.checkers.game.Board;
-import com.example.checkers.game.Pos;
+import checkers.game.Board;
+import checkers.game.Pos;
 import java.util.List;
 import java.util.Set;
 

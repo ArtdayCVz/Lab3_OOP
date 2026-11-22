@@ -1,4 +1,4 @@
-package com.example.checkers.game;
+package checkers.game;
 
 import java.util.ArrayList;
 import java.util.Collections;
